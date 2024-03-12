@@ -14,5 +14,9 @@ import {
 export class CardComponent implements OnInit {
   @Input() hotel: any;
 
+  getStarsArray(num: number): any[] {
+    return new Array(num);
+  }
+
   ngOnInit(): void {}
 }

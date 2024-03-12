@@ -1,68 +1,32 @@
-<section class="product">
-  <div class="product__photo">
-    <div class="photo-container">
-      <div class="photo-main">
-        <img [src]="hotel.img" alt="Hotel Image" />
+<div
+  class="card-container"
+  [ngStyle]="{
+    'background-image': 'url(' + hotel.img + ')',
+    'background-size': 'cover',
+    'background-position': 'center',
+    'background-repeat': 'no-repeat',
+    'box-shadow': 'inset 0px -180px 100px rgba(0,0,0,0.5)'
+  }"
+>
+  <!-- <div class="card-carousel">
+    <div class="card-carousel-modul"></div>
+  </div> -->
+  <div class="card-content">
+    <div class="card-content__mainContent">
+      <div class="card-content__hotelInfo">
+        <h2 class="card-content__title">{{ hotel.title | truncate : 21 }}</h2>
+        <div class="card-content__country">{{ hotel.country }}</div>
+        <div class="card-content__stars">
+          <span *ngFor="let star of getStarsArray(hotel.stars)"
+            ><i class="bi bi-star-fill"></i
+          ></span>
+        </div>
       </div>
-      <div class="photo-album">
-        <ul>
-          <li>
-            <img
-              src="https://res.cloudinary.com/john-mantas/image/upload/v1537302064/codepen/delicious-apples/green-apple2.png"
-              alt="green apple"
-            />
-          </li>
-          <li>
-            <img
-              src="https://res.cloudinary.com/john-mantas/image/upload/v1537303532/codepen/delicious-apples/half-apple.png"
-              alt="half apple"
-            />
-          </li>
-          <li>
-            <img
-              src="https://res.cloudinary.com/john-mantas/image/upload/v1537303160/codepen/delicious-apples/green-apple-flipped.png"
-              alt="green apple"
-            />
-          </li>
-          <li>
-            <img
-              src="https://res.cloudinary.com/john-mantas/image/upload/v1537303708/codepen/delicious-apples/apple-top.png"
-              alt="apple top"
-            />
-          </li>
-        </ul>
+      <div class="card-content__priceInfo">
+        <div class="card-content__currentPrice">{{ hotel.price }} $</div>
+        <p class="card-content__night">for 1 night</p>
+        <button class="card-content__selectButton">Learn More</button>
       </div>
     </div>
   </div>
-  <div class="product__info">
-    <div class="title">
-      <h1>{{ hotel.title }}</h1>
-      <span>{{ hotel.country }}</span>
-    </div>
-    <div class="price">
-      R$ <span>{{ hotel.price }}</span>
-    </div>
-    <div class="variant">
-      <h3>CHOOSE THE NUMBER OF DAYS</h3>
-      <ul>
-        <li>
-          <div>1</div>
-        </li>
-        <li>
-          <div>3</div>
-        </li>
-        <li>
-          <div>5</div>
-        </li>
-        <li>
-          <div>7</div>
-        </li>
-      </ul>
-    </div>
-    <div class="description">
-      <h3>BENEFITS</h3>
-      <p>{{ hotel.describe | truncate : 100 }}</p>
-    </div>
-    <button class="buy--btn">Learn More</button>
-  </div>
-</section>
+</div>

@@ -1,8 +1,13 @@
 .popular-offers {
   display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  margin: 0;
-  padding: 0;
+}
+
+.app-card {
+  flex: 1;
 }
