@@ -1,4 +1,4 @@
-import { ApiService } from './../../api/api.service';
+import { ApiService } from '../../../api/api.service';
 import { OnInit } from '@angular/core';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
@@ -14,7 +14,7 @@ export class OffersComponent implements OnInit {
   constructor(private apiService: ApiService) {}
   ngOnInit(): void {
     this.apiService.getHotels().subscribe((data) => {
-      this.hotels = data;
+      this.hotels = data.slice(0, 3);
     });
   }
 }

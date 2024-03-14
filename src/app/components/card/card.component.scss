@@ -4,6 +4,7 @@ $text-color: white;
   margin-top: 25px;
   width: 800px;
   border-radius: 25px;
+
   background: rgba(0, 0, 0, 0.5);
 }
 
@@ -17,6 +18,7 @@ $text-color: white;
   box-sizing: border-box;
   flex-direction: column;
   padding: 250px 24px 24px;
+  border-radius: 25px;
 }
 
 .card-content__ratingWrapper {

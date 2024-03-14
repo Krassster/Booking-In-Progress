@@ -1,0 +1,40 @@
+<div class="hotels-page">
+  <div class="filters">
+    <h4>Choose country</h4>
+    <select [(ngModel)]="selectedCountry" (change)="filterHotels()">
+      <option value="All country">All country</option>
+      <option *ngFor="let country of countries">{{ country }}</option>
+    </select>
+
+    <section class="filter-section">
+      <h4>Star Rating</h4>
+      <div class="stars-filter">
+        <div *ngFor="let star of stars">
+          <input
+            type="checkbox"
+            [id]="'star-' + star"
+            (change)="updateSelectedStars(star)"
+            [checked]="selectedStars.includes(star)"
+          />
+          <label [for]="'star-' + star">{{ star }} star</label>
+        </div>
+      </div>
+    </section>
+
+    <section class="filter-section">
+      <h4>Price</h4>
+      <ngx-slider
+        [(value)]="selectedPriceRange.min"
+        [(highValue)]="selectedPriceRange.max"
+        [options]="priceRangeOptions"
+        (userChangeEnd)="updatePriceRange($event)"
+      ></ngx-slider>
+    </section>
+  </div>
+
+  <main class="hotels-container">
+    <div *ngFor="let hotel of filteredHotels" class="hotel-card">
+      <app-card [hotel]="hotel"></app-card>
+    </div>
+  </main>
+</div>
