@@ -19,6 +19,7 @@ $text-color: white;
   flex-direction: column;
   padding: 250px 24px 24px;
   border-radius: 25px;
+  box-shadow: 3px 5px 5px -5px rgba(0, 0, 0, 0.5);
 }
 
 .card-content__ratingWrapper {
@@ -35,6 +36,7 @@ $text-color: white;
   gap: 2px;
   padding-top: 3px;
   color: $text-color;
+  color: #ffd700;
 }
 
 .card-content__mainContent {

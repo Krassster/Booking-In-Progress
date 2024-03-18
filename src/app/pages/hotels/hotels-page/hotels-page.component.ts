@@ -53,6 +53,14 @@ export class HotelsPageComponent implements OnInit {
     this.filterHotels();
   }
 
+  resetSettings() {
+    this.selectedPriceRange.min = this.priceRange.min;
+    this.selectedPriceRange.max = this.priceRange.max;
+    this.selectedCountry = 'All country';
+    this.selectedStars = [];
+    this.filterHotels();
+  }
+
   updateSelectedStars(star: number) {
     if (this.selectedStars.includes(star)) {
       this.selectedStars = this.selectedStars.filter((s) => s !== star);

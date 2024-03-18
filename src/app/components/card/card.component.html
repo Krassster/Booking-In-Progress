@@ -25,7 +25,12 @@
       <div class="card-content__priceInfo">
         <div class="card-content__currentPrice">{{ hotel.price }} $</div>
         <p class="card-content__night">for 1 night</p>
-        <button class="card-content__selectButton">Learn More</button>
+        <button
+          class="card-content__selectButton"
+          (click)="goToHotelPage(hotel.id)"
+        >
+          Learn More
+        </button>
       </div>
     </div>
   </div>

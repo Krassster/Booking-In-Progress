@@ -1,1 +1,46 @@
-<p>hotel-page works!</p>
+<div class="hotel-page">
+  <div *ngIf="!hotel" class="error">
+    <h2>Отель с данным id не найден</h2>
+  </div>
+
+  <div *ngIf="hotel" class="hotel-wrapper">
+    <div class="hotel-info">
+      <div class="hotel-stars">
+        <span *ngFor="let _ of [].constructor(hotel.stars); let i = index">
+          <i class="bi bi-star-fill"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="hotel-title">{{ hotel.title }}</div>
+    <div class="hotel-country">{{ hotel.city }}, {{ hotel.country }}</div>
+
+    <div class="hotel-info">
+      <span class="hotel-rating">{{ hotel.rating }}</span>
+      <div class="hotel-reviews">на основе {{ hotel.review }} оценок</div>
+    </div>
+
+    <div class="hotel-description">
+      <p>{{ hotel.describe }}</p>
+    </div>
+
+    <div class="hotel-images">
+      <img *ngFor="let image of hotel.img" [src]="image" class="hotel-image" />
+    </div>
+
+    <div class="map-container">
+      <div class="hotel-adress">
+        <h3>Adress</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse dolore
+          molestias assumenda minus, animi laudantium. Voluptatum excepturi vero
+          porro sunt et minima sit maiores beatae aliquam, suscipit, quaerat
+          quidem tempore.
+        </p>
+      </div>
+      <div class="hotel-map" *ngIf="hotel.GPS">
+        <app-map [gps]="hotel.GPS" class="leaflet"></app-map>
+      </div>
+    </div>
+  </div>
+</div>

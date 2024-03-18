@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import * as L from 'leaflet';
 
 @Component({
@@ -8,10 +13,12 @@ import * as L from 'leaflet';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MapComponent implements OnInit {
+  @Input() gps!: [number, number];
+
   private map!: L.Map;
 
   private initMap(): void {
-    this.map = L.map('map').setView([7.9967, 98.293], 13);
+    this.map = L.map('map').setView(this.gps, 13);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
@@ -19,7 +26,7 @@ export class MapComponent implements OnInit {
         '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     }).addTo(this.map);
 
-    let marker = L.marker([7.9967, 98.293]).addTo(this.map);
+    let marker = L.marker(this.gps).addTo(this.map);
 
     // let circle = L.circle([51.508, -0.11], {
     //   color: 'red',

@@ -1,10 +1,12 @@
 <div class="hotels-page">
   <div class="filters">
-    <h4>Choose country</h4>
-    <select [(ngModel)]="selectedCountry" (change)="filterHotels()">
-      <option value="All country">All country</option>
-      <option *ngFor="let country of countries">{{ country }}</option>
-    </select>
+    <section class="filter-section">
+      <h4>Choose country</h4>
+      <select [(ngModel)]="selectedCountry" (change)="filterHotels()">
+        <option value="All country">All country</option>
+        <option *ngFor="let country of countries">{{ country }}</option>
+      </select>
+    </section>
 
     <section class="filter-section">
       <h4>Star Rating</h4>
@@ -29,6 +31,7 @@
         [options]="priceRangeOptions"
         (userChangeEnd)="updatePriceRange($event)"
       ></ngx-slider>
+      <button class="btn-reset" (click)="resetSettings()">Reset</button>
     </section>
   </div>
 
