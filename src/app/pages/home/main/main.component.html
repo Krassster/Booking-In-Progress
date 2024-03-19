@@ -5,34 +5,49 @@
   <!-- <img src="assets/img/BGmain.jpg" /> -->
   <div class="search-panel">
     <div class="search-panel__country">
-      <div class="input-wrapper">
-        <input class="location-input" type="text" placeholder="Where" />
-        <label class="location-label"> Country</label>
-      </div>
+      <section class="input-wrapper">
+        <label class="location-label">Country</label>
+        <input
+          class="location-input"
+          type="text"
+          [(ngModel)]="selectedCountry"
+          placeholder="Where"
+        />
+      </section>
       <div class="list-wrapper"></div>
     </div>
     <div class="search-panel__date">
-      <div class="date-in">
-        <div class="title">Check In</div>
-        <div class="date">When</div>
-      </div>
-      <div class="date-out">
-        <div class="title">Check Out</div>
-        <div class="date">When</div>
-      </div>
-      <div class="data-calendar"></div>
+      <section class="price-section">
+        <label class="price-label">Price Min</label>
+        <input
+          type="number"
+          [(ngModel)]="priceMin"
+          placeholder="From"
+          class="price-input"
+        />
+      </section>
     </div>
+
+    <div class="search-panel__date">
+      <section class="price-section">
+        <label class="price-label">Price Max</label>
+        <input
+          type="number"
+          [(ngModel)]="priceMax"
+          placeholder="To"
+          class="price-input"
+        />
+      </section>
+    </div>
+
     <div class="search-guests-pick">
       <div class="select-guests">
         <button class="select-guests--btn">
-          <div class="title">Guest</div>
-          <div class="body">
-            2 adult,
-            <span> without children</span>
-          </div>
+          <div class="title">Stars</div>
+          <div class="body">4 stars</div>
         </button>
       </div>
-      <button class="btn-search-main">
+      <button class="btn-search-main" (click)="search()">
         <i class="bi bi-search"></i>
       </button>
     </div>

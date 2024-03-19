@@ -1,4 +1,4 @@
-import { ApiService, Hotel } from 'src/app/api/api.service';
+import { ApiService, Hotel } from 'src/app/service/api/api.service';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 

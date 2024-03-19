@@ -1,4 +1,4 @@
-import { ApiService } from '../../../api/api.service';
+import { ApiService } from '../../../service/api/api.service';
 import { OnInit } from '@angular/core';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 

@@ -1,6 +1,7 @@
+import { ActivatedRoute } from '@angular/router';
 import { Options } from '@angular-slider/ngx-slider/options';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ApiService, Hotel } from 'src/app/api/api.service';
+import { ApiService, Hotel } from 'src/app/service/api/api.service';
 
 @Component({
   selector: 'app-hotels-page',
@@ -24,13 +25,27 @@ export class HotelsPageComponent implements OnInit {
     step: 10,
   };
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private route: ActivatedRoute) {}
+
   ngOnInit(): void {
     this.apiService.getHotels().subscribe((data) => {
       this.hotels = data;
       this.filteredHotels = [...this.hotels];
       this.setPriceRange();
       this.getCountries();
+    });
+
+    this.route.queryParams.subscribe((params) => {
+      this.selectedCountry = params['country'] || 'All country';
+      // this.selectedStars = params['stars'] ? params['stars'].split(',').map(Number) : [];
+      this.selectedPriceRange = {
+        min: +params['priceMin'] || 0,
+        max: +params['priceMax'] || 1000,
+      };
+      this.selectedStars = params['stars']
+        ? params['stars'].split(',').map(Number)
+        : [];
+      this.filterHotels();
     });
   }
 
@@ -76,9 +91,9 @@ export class HotelsPageComponent implements OnInit {
       const matchesCountry =
         this.selectedCountry === 'All country' ||
         hotel.country === this.selectedCountry;
-      const matchesStars = this.selectedStars.length
-        ? this.selectedStars.includes(hotel.stars)
-        : true;
+      const matchesStars =
+        this.selectedStars.length === 0 ||
+        this.selectedStars.includes(hotel.stars);
       const matchesPrice =
         hotel.price >= this.selectedPriceRange.min &&
         hotel.price <= this.selectedPriceRange.max;

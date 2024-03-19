@@ -49,7 +49,7 @@ export class ApiService {
       city: 'Hong Kong',
       describe:
         'A hotel in a 65-story skyscraper overlooking Victoria Harbour. It features 11 restaurants and lounges, a fitness center, and a pool. The interiors were designed by Taiwanese-origin designer Tony Chi, while the lobby and halls are adorned with works by contemporary artists, including those by British artists Henry Moore and Damien Hirst.',
-      rating: 5.3,
+      rating: 9.3,
       stars: 5,
       review: 641,
       img: [
