@@ -15,6 +15,10 @@ export class MainComponent {
 
   constructor(private routre: Router) {}
 
+  updateStars(index: number): void {
+    this.selectedStars[index] = !this.selectedStars[index];
+  }
+
   search(): void {
     const stars = this.selectedStars
       .map((selected, i) => (selected ? i + 1 : null))

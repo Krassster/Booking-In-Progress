@@ -35,9 +35,22 @@
     </section>
   </div>
 
-  <main class="hotels-container">
+  <main
+    class="hotels-container"
+    *ngIf="filteredHotels.length > 0; else noHotels"
+  >
     <div *ngFor="let hotel of filteredHotels" class="hotel-card">
       <app-card [hotel]="hotel"></app-card>
     </div>
   </main>
+
+  <ng-template #noHotels>
+    <h2 *ngIf="notFoundfCountry" class="no-hotels-message">
+      There are no hotels in this country. Select another country from the
+      drop-down list of hotels
+    </h2>
+    <h2 *ngIf="notFoundOtherFilters" class="no-hotels-message">
+      The hotel with the specified parameters were not found. Try other options.
+    </h2>
+  </ng-template>
 </div>

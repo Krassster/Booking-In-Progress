@@ -11,11 +11,16 @@ import { ApiService, Hotel } from 'src/app/service/api/api.service';
 })
 export class HotelsPageComponent implements OnInit {
   hotels: Hotel[] = [];
-  filteredHotels: Hotel[] = [];
   countries: string[] = [];
   stars: number[] = [5, 4, 3, 2, 1];
+
+  filteredHotels: Hotel[] = [];
+
   selectedStars: number[] = [];
   selectedCountry: string = 'All country';
+
+  notFoundfCountry: boolean = false;
+  notFoundOtherFilters: boolean = false;
 
   priceRange: { min: number; max: number } = { min: 0, max: 1000 };
   selectedPriceRange: { min: number; max: number } = { min: 0, max: 1000 };
@@ -86,7 +91,26 @@ export class HotelsPageComponent implements OnInit {
     this.filterHotels();
   }
 
+  isCountryCorrect() {
+    this.notFoundfCountry = false;
+    this.notFoundOtherFilters = false;
+
+    if (this.filterHotels.length === 0) {
+      if (
+        this.selectedCountry &&
+        this.selectedCountry !== 'All countries' &&
+        !this.hotels.some((hotel) => hotel.country === this.selectedCountry)
+      ) {
+        this.notFoundfCountry = true;
+      } else {
+        this.notFoundOtherFilters = true;
+      }
+    }
+  }
+
   filterHotels() {
+    this.isCountryCorrect();
+
     this.filteredHotels = this.hotels.filter((hotel) => {
       const matchesCountry =
         this.selectedCountry === 'All country' ||

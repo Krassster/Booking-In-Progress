@@ -42,10 +42,30 @@
 
     <div class="search-guests-pick">
       <div class="select-guests">
-        <button class="select-guests--btn">
-          <div class="title">Stars</div>
-          <div class="body">4 stars</div>
-        </button>
+        <div class="select-stars">
+          <label class="stars-label">Stars</label>
+          <div class="stars-checkboxes">
+            <label
+              class="stars-checkbox"
+              *ngFor="let star of [5, 4, 3, 2, 1]; let i = index"
+            >
+              <input
+                type="checkbox"
+                [(ngModel)]="selectedStars[i]"
+                (click)="updateStars(i)"
+              />
+
+              <span class="star-container" [class.filled]="selectedStars[i]">
+                <i
+                  class="bi"
+                  [class.bi-star-fill]="selectedStars[i]"
+                  [class.bi-star]="!selectedStars[i]"
+                ></i>
+                <span class="star-number">{{ i + 1 }}</span>
+              </span>
+            </label>
+          </div>
+        </div>
       </div>
       <button class="btn-search-main" (click)="search()">
         <i class="bi bi-search"></i>
